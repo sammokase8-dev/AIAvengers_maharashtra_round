@@ -1,0 +1,25 @@
+{
+  "name": "creator-ai-root",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently --kill-others --names BACKEND,FRONTEND --prefix-colors blue,green \"npm run dev --workspace backend\" \"npm run dev --workspace frontend\"",
+    "dev:frontend": "npm run dev --workspace frontend",
+    "dev:backend": "npm run dev --workspace backend",
+    "build:frontend": "npm run build --workspace frontend",
+    "build:backend": "npm run build --workspace backend",
+    "build": "npm run build:backend && npm run build:frontend",
+    "start": "concurrently --kill-others --names BACKEND,FRONTEND --prefix-colors blue,green \"npm run start --workspace backend\" \"npm run preview --workspace frontend -- --host 0.0.0.0\"",
+    "seed": "npm run seed --workspace backend",
+    "test:backend": "npm run test --workspace backend",
+    "test": "npm run test:backend",
+    "preview": "npm run preview --workspace frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
